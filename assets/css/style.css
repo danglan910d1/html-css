@@ -153,6 +153,14 @@ html {
     font-size: 14px;
 }
 
+#header .mobile-menu-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+#header .mobile-menu-btn,
 #header .search-btn {
     float: right;
     padding: 0 21px;
@@ -163,6 +171,15 @@ html {
     background: #f44336;
 }
 
+#header .mobile-menu-btn:hover {
+    background: #ccc;
+}
+
+#header .mobile-menu-btn:hover .mobile-menu-icon {
+    color: #000;
+}
+
+#header .mobile-menu-icon,
 #header .search-icon {
     color: #ffff;
     font-size: 20px;
@@ -204,9 +221,12 @@ html {
 
 #content .content-section {
     width: 800px;
+    max-width: 100%;
     padding: 64px 0 112px;
     margin-left: auto;
     margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 #content .section-heading{

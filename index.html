@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE BAND</title>
-    <link rel="icon" href="https://hoangthaomoc.com/public/images/files/DAT/anh%20tin%20tuc%20tra/Nghe-nhac-khong-loi-giup-thu-gian-tinh-tao.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="./assets/font/themify-icons/themify-icons.css">
+    <link rel="icon" href="https://hoangthaomoc.com/public/images/files/DAT/anh%20tin%20tuc%20tra/Nghe-nhac-khong-loi-giup-thu-gian-tinh-tao.jpg" type="image/x-icon" />
 </head>
 <body>
     <div id="main">
@@ -29,6 +30,10 @@
                     </ul>
                 </li>
             </ul>
+
+                <div id="mobile-menu" class="mobile-menu-btn">
+                    <i class="mobile-menu-icon ti-menu"></i>
+                </div>
 
                 <div class="search-btn">
                     <i class="search-icon ti-search"></i>
@@ -130,15 +135,15 @@
                         <form action="">
                             <div class="row">
                                 <div class="col col-half">
-                                    <input type="text" name="" placeholder="Name" required id="" class="form-control">
+                                    <input type="text" name="" placeholder="Name" required id="#" class="form-control">
                                 </div>
                                 <div class="col col-half">
-                                    <input type="email" name="" placeholder="Name" required id="" class="form-control">
+                                    <input type="email" name="" placeholder="Name" required id="##" class="form-control">
                                 </div>
                             </div>
                             <div class="row mt-8">
                                 <div class="col col-full">
-                                    <input type="text" name="" placeholder="Message" required id="" class="form-control">
+                                    <input type="text" name="" placeholder="Message" required id="###" class="form-control">
                                 </div>  
                             </div>
                             <input class="btn pull-right mt-16" type="submit" value="SEND">
@@ -231,6 +236,39 @@
         modalContainer.addEventListener('click', function(event) {
             event.stopPropagation()
         })
+
+    </script>
+
+    <script>
+        var header = document.getElementById('header');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var headerHeight = header.clientHeight;
+
+        //Đóng/mở mobile menu
+        mobileMenu.onclick = function() {
+            var isClose = header.clientHeight === headerHeight;
+            if (isClose) {
+                header.style.height = 'auto';
+            } else {
+                header.style.height = null;
+            }
+        }
+
+        //Tự động đóng mobile menu khi chọn thành phần trong menu
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+        
+        for (var i = 0; i < menuItems.length; i++) {
+            var menuItem = menuItems[i];
+            
+            menuItem.onclick = function(event) {
+                var isParentMenu = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav');
+                if (isParentMenu) {
+                    event.preventDefault();
+                } else {
+                    header.style.height = null;
+                }
+            }
+        }
 
     </script>
 
